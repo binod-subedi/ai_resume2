@@ -44,4 +44,16 @@ collection.upsert(
     metadatas=metadata
 )
 
-print(f'Total chunks in database: {collection.count()}')
+results = collection.query(
+    query_texts=["What are the candidate's customer service or canteen skills?"],
+    n_results=1,
+    where={'source':"sample_resume.pdf"}
+)
+
+retrieved_chunks = results["documents"][0][0]
+retrieved_metadata = results['metadatas'][0][0]
+
+print("\n=== SEARCH RESULTS ===")
+print(f"Source Document: {retrieved_metadata['source']}")
+print(f"Content: {retrieved_chunks}")
+print("======================\n")
