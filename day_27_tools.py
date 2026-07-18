@@ -33,8 +33,8 @@ tools_menu = [
     }
 ]
 
-
 user_text = "If a candidate makes $120,000 a year, what is their exact take-home pay?"
+
 def ai_call(user_prompt : str):
     try:
         response = ai_client.chat.completions.create(
